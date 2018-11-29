@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 import {MediaSearchComponent} from "./media-search";
-import {IonicModule} from "ionic-angular";
+import {IonicPageModule} from "ionic-angular";
 
 @NgModule({
     declarations: [
         MediaSearchComponent
     ],
     imports: [
-        IonicModule
+        IonicPageModule.forChild(MediaSearchComponent)
     ],
     exports: [
         MediaSearchComponent

@@ -8,7 +8,7 @@ import {Media} from "../../Interfaces/Media";
 })
 export class MediaComponent implements OnInit {
     @Input() media: Media;
-    poster: Object;
+    poster: string;
     rating: number;
 
     private maxRating = 5;
