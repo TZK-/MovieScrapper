@@ -19,5 +19,7 @@ export class MediaComponent implements OnInit {
     ngOnInit(): void {
         this.poster = this.posterProvider.getUrl(this.media.imdbID);
         this.rating = Math.round(this.media.Metascore * this.maxRating / 100);
+
+        console.log(this.poster, this.rating);
     }
 }
