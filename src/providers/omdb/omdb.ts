@@ -11,7 +11,7 @@ export class OmdbProvider {
         this.config = API_CONFIG;
     }
 
-    getMovies(search = 'batman', params = {}) {
+    getMovies(search: string, params = {}) {
         const observable = this.http.get(this.getUrl({...{s: search}, ...params})).pipe(
             map(results => {
                 if (results) {
@@ -23,7 +23,7 @@ export class OmdbProvider {
         return this.toPromise(observable);
     }
 
-    getMovie(id: string, params = {}) {
+    getMedia(id: string, params = {}) {
         const observable = this.http.get(this.getUrl({...{i: id}, ...params}));
 
         return this.toPromise(observable);

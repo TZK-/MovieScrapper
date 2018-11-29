@@ -19,7 +19,7 @@ export class MovieDetailPage {
     ionViewDidLoad() {
         const selectedMovie = this.navParams.get('media');
 
-        this.omdb.getMovie(selectedMovie.imdbID, {plot: 'full'})
+        this.omdb.getMedia(selectedMovie.imdbID, {plot: 'full'})
             .then((movie: any) => {
                 this.movie = movie;
             })

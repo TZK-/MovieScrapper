@@ -2,6 +2,8 @@ export interface Media {
     Title: string,
     Year: number,
     imdbID: string,
+    imdbRating: number,
+    imdbVotes: string,
     type: string,
     Poster: string,
     Rated: string,

@@ -27,7 +27,7 @@ export class MediaSearchComponent {
             })
     }
 
-    showDetail(media: Object) {
+    showDetail(media: Media) {
         this.navigation.push(this.detailPage, {
             media: media
         })

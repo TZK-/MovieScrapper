@@ -12,6 +12,8 @@ import {TabsPage} from "../pages/tabs/tabs";
 import {HttpClientModule} from "@angular/common/http";
 import {MoviesPageModule} from "../pages/movies/movies.module";
 import {MovieDetailPageModule} from "../pages/movie-detail/movie-detail.module";
+import {SerieDetailPageModule} from "../pages/serie-detail/serie-detail.module";
+import {SeriesPageModule} from "../pages/series/series.module";
 
 @NgModule({
     declarations: [
@@ -24,7 +26,9 @@ import {MovieDetailPageModule} from "../pages/movie-detail/movie-detail.module";
         IonicModule.forRoot(MyApp),
         HttpClientModule,
         MoviesPageModule,
-        MovieDetailPageModule
+        SeriesPageModule,
+        MovieDetailPageModule,
+        SerieDetailPageModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [

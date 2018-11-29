@@ -1,11 +1,18 @@
 <ion-card>
     <ion-item>
-        <h2>{{ media.Title }}</h2>
+        <h2><a [href]="media.Website">{{ media.Title }}</a></h2>
         <p>{{ media.Released }}</p>
-        <rating [rating]="rating" [maxRating]="maxRating"></rating>
+        <p>{{ media.Genre }}</p>
+        <p>{{ media.Rated }}</p>
+        <p>{{ media.Production }}</p>
+        <p>{{ media.Actors }}</p>
+        <p>
+            <rating [rating]="rating" [maxRating]="maxRating"></rating> ({{ media.imdbVotes }})
+        </p>
+        <p>{{ media.Awards }}</p>
     </ion-item>
 
-    <img src="{{ poster }}">
+    <img [src]="poster">
 
     <ion-card-content>
         <p>{{ media.Plot }}</p>

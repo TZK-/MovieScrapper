@@ -1,11 +1,17 @@
 <ion-searchbar (ionInput)="onInput($event)"></ion-searchbar>
 
-<ion-list>
-    <ion-item *ngFor="let result of results" (tap)="showDetail(result)">
-        {{ result.Title }}
-    </ion-item>
-
-    <ion-item *ngIf="!results">
-        No results for the query
-    </ion-item>
-</ion-list>
+<ion-content padding class="card-background">
+    <ion-row>
+        <ion-col col-12 *ngFor="let result of results">
+            <ion-card (tap)="showDetail(result)" class="card-background-page">
+                <div class="image">
+                    <img src="{{ result.Poster }}"/>
+                </div>
+                <div class="card-title">
+                    {{ result.Title }}
+                    <div class="card-subtitle">{{ result.Year }}</div>
+                </div>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-content>
