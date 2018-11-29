@@ -1,0 +1,11 @@
+<ion-searchbar (ionInput)="onInput($event)"></ion-searchbar>
+
+<ion-list>
+    <ion-item *ngFor="let result of results" (tap)="showDetail(result)">
+        {{ result.Title }}
+    </ion-item>
+
+    <ion-item *ngIf="!results">
+        No results for the query
+    </ion-item>
+</ion-list>

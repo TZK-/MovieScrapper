@@ -1,13 +1,14 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {map} from "rxjs/operators";
+import {API_CONFIG} from "./config";
 
 @Injectable()
 export class OmdbProvider {
     private config: any;
 
     constructor(private http: HttpClient) {
-        this.config = {};
+        this.config = API_CONFIG;
     }
 
     getMovies(search = 'batman', params = {}) {
@@ -32,7 +33,7 @@ export class OmdbProvider {
         return new Promise((resolve, reject) => {
             observable.subscribe(response => {
                 if (response === undefined) {
-                    return reject();
+                    return reject(null);
                 }
 
                 if (response.Error !== undefined) {
