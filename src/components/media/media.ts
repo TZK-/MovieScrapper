@@ -1,12 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PosterProvider} from "../../providers/omdb/poster";
+import {Media} from "../../Interfaces/Media";
 
 @Component({
     selector: 'media',
     templateUrl: 'media.html'
 })
 export class MediaComponent implements OnInit {
-    @Input() media: any;
+    @Input() media: Media;
     poster: Object;
     rating: number;
 
@@ -19,7 +20,5 @@ export class MediaComponent implements OnInit {
     ngOnInit(): void {
         this.poster = this.posterProvider.getUrl(this.media.imdbID);
         this.rating = Math.round(this.media.Metascore * this.maxRating / 100);
-
-        console.log(this.poster, this.rating);
     }
 }

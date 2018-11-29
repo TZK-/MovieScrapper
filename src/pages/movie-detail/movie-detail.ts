@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavParams} from 'ionic-angular';
 import {OmdbProvider} from "../../providers/omdb/omdb";
+import {Media} from "../../Interfaces/Media";
 
 @IonicPage()
 @Component({
@@ -9,7 +10,7 @@ import {OmdbProvider} from "../../providers/omdb/omdb";
 })
 export class MovieDetailPage {
 
-    movie: any;
+    movie: Media;
 
     constructor(private navParams: NavParams, private omdb: OmdbProvider) {
         //

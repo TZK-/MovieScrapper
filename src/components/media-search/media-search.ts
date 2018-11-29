@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {OmdbProvider} from "../../providers/omdb/omdb";
 import {NavController} from "ionic-angular";
+import {Media} from "../../Interfaces/Media";
 
 @Component({
     selector: 'media-search',
@@ -10,7 +11,7 @@ export class MediaSearchComponent {
     @Input() searchType: string;
     @Input() detailPage : any;
 
-    public results: Array<Object>;
+    public results: Array<Media>;
 
     constructor(private omdb: OmdbProvider, private navigation: NavController) {
         this.reset();

@@ -1,0 +1,21 @@
+export interface Media {
+    Title: string,
+    Year: number,
+    imdbID: string,
+    type: string,
+    Poster: string,
+    Rated: string,
+    Released: string,
+    Runtime: string,
+    Genre: string,
+    Director: string,
+    Writer: string,
+    Actors: string,
+    Plot: string,
+    Language: string,
+    Country: string,
+    Awards: string,
+    Metascore: number,
+    Production: string,
+    Website: string;
+}
