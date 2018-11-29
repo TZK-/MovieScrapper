@@ -11,9 +11,8 @@ import {PosterProvider} from '../providers/omdb/poster';
 import {TabsPage} from "../pages/tabs/tabs";
 import {HttpClientModule} from "@angular/common/http";
 import {MoviesPageModule} from "../pages/movies/movies.module";
-import {MovieDetailPageModule} from "../pages/movie-detail/movie-detail.module";
-import {SerieDetailPageModule} from "../pages/serie-detail/serie-detail.module";
 import {SeriesPageModule} from "../pages/series/series.module";
+import {MediaDetailPageModule} from "../pages/media-detail/media-detail.module";
 
 @NgModule({
     declarations: [
@@ -27,8 +26,7 @@ import {SeriesPageModule} from "../pages/series/series.module";
         HttpClientModule,
         MoviesPageModule,
         SeriesPageModule,
-        MovieDetailPageModule,
-        SerieDetailPageModule
+        MediaDetailPageModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [

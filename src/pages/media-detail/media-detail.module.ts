@@ -1,16 +1,16 @@
 import {NgModule} from '@angular/core';
 import {IonicPageModule} from 'ionic-angular';
-import {SerieDetailPage} from './serie-detail';
 import {MediaComponentModule} from "../../components/media/media.module";
+import {MediaDetailPage} from "./media-detail";
 
 @NgModule({
     declarations: [
-        SerieDetailPage,
+        MediaDetailPage
     ],
     imports: [
-        IonicPageModule.forChild(SerieDetailPage),
+        IonicPageModule.forChild(MediaDetailPage),
         MediaComponentModule
     ],
 })
-export class SerieDetailPageModule {
+export class MediaDetailPageModule {
 }

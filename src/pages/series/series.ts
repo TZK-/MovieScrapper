@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {IonicPage} from 'ionic-angular';
-import {SerieDetailPage} from "../serie-detail/serie-detail";
+import {MediaDetailPage} from "../media-detail/media-detail";
 
 @IonicPage()
 @Component({
@@ -8,5 +8,5 @@ import {SerieDetailPage} from "../serie-detail/serie-detail";
     templateUrl: 'series.html',
 })
 export class SeriesPage {
-    public detailPage: any = SerieDetailPage;
+    public detailPage: any = MediaDetailPage;
 }

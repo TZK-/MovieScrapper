@@ -4,7 +4,7 @@ export interface Media {
     imdbID: string,
     imdbRating: number,
     imdbVotes: string,
-    type: string,
+    Type: string,
     Poster: string,
     Rated: string,
     Released: string,

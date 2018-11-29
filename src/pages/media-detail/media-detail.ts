@@ -5,28 +5,27 @@ import {Media} from "../../Interfaces/Media";
 
 @IonicPage()
 @Component({
-    selector: 'page-serie-detail',
-    templateUrl: 'serie-detail.html',
+    selector: 'page-media-detail',
+    templateUrl: 'media-detail.html',
 })
-export class SerieDetailPage {
+export class MediaDetailPage {
 
-    serie: Media;
+    movie: Media;
 
     constructor(private navParams: NavParams, private omdb: OmdbProvider) {
         //
     }
 
-    ngOnInit() {
+    ionViewDidLoad() {
         const selectedMovie = this.navParams.get('media');
 
         this.omdb.getMedia(selectedMovie.imdbID, {plot: 'full'})
-            .then((serie: Media) => {
-                this.serie = serie;
+            .then((movie: any) => {
+                this.movie = movie;
             })
             .catch((errorMessage: string) => {
                 // TODO handle error
                 console.log(errorMessage);
             });
     }
-
 }
