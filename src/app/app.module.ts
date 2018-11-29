@@ -10,29 +10,27 @@ import {OmdbProvider} from '../providers/omdb/omdb';
 import {PosterProvider} from '../providers/omdb/poster';
 import {TabsPage} from "../pages/tabs/tabs";
 import {HttpClientModule} from "@angular/common/http";
-import {MovieDetailPage} from "../pages/movie-detail/movie-detail";
-import {MoviesPage} from "../pages/movies/movies";
 import {MoviesPageModule} from "../pages/movies/movies.module";
+import {MovieDetailPageModule} from "../pages/movie-detail/movie-detail.module";
 
 @NgModule({
     declarations: [
         MyApp,
         HomePage,
-        TabsPage,
-        MovieDetailPage,
+        TabsPage
     ],
     imports: [
         BrowserModule,
         IonicModule.forRoot(MyApp),
         HttpClientModule,
-        MoviesPageModule
+        MoviesPageModule,
+        MovieDetailPageModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
         HomePage,
-        TabsPage,
-        MovieDetailPage
+        TabsPage
     ],
     providers: [
         StatusBar,

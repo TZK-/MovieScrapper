@@ -6,13 +6,14 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>MovieDetail</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title *ngIf="movie">{{ movie.Title }}</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
-
+    <div *ngIf="movie">
+        <media [media]="movie"></media>
+    </div>
 </ion-content>

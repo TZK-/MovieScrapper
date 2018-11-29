@@ -1,16 +1,20 @@
-import { NgModule } from '@angular/core';
-import { RatingComponent } from './rating/rating';
-import { MediaSearchComponent } from './media-search/media-search';
-import {MovieDetailPage} from "../pages/movie-detail/movie-detail";
+import {NgModule} from '@angular/core';
+import {RatingComponent} from './rating/rating';
+import {MediaSearchComponent} from './media-search/media-search';
+import {MediaComponent} from './media/media';
+
 @NgModule({
-	declarations: [
-		RatingComponent,
-    	MediaSearchComponent
-	],
-	imports: [],
-	exports: [
-		RatingComponent,
-    	MediaSearchComponent
-	]
+    declarations: [
+        RatingComponent,
+        MediaSearchComponent,
+        MediaComponent
+    ],
+    imports: [],
+    exports: [
+        RatingComponent,
+        MediaSearchComponent,
+        MediaComponent
+    ]
 })
-export class ComponentsModule {}
+export class ComponentsModule {
+}
