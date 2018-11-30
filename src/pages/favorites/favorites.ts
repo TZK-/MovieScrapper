@@ -12,7 +12,7 @@ import {MediaDetailPage} from "../media-detail/media-detail";
 export class FavoritesPage {
 
     favourites: Array<Media>;
-    detailPage: MediaDetailPage;
+    detailPage = MediaDetailPage;
 
     constructor(private favouriteProvider: FavouriteProvider) {
         //
