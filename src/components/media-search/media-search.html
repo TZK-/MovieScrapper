@@ -1,17 +1,9 @@
 <ion-searchbar (ionInput)="onInput($event)"></ion-searchbar>
 
-<ion-content padding class="card-background">
+<ion-content padding>
     <ion-row>
-        <ion-col col-12 *ngFor="let result of results">
-            <ion-card (tap)="showDetail(result)" class="card-background-page">
-                <div class="image">
-                    <img src="{{ result.Poster }}"/>
-                </div>
-                <div class="card-title">
-                    {{ result.Title }}
-                    <div class="card-subtitle">{{ result.Year }}</div>
-                </div>
-            </ion-card>
+        <ion-col col-12 *ngFor="let media of medias">
+            <media-card [media]="media" [detailPage]="detailPage"></media-card>
         </ion-col>
     </ion-row>
 </ion-content>

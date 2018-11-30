@@ -11,9 +11,9 @@ export class MediaSearchComponent {
     @Input() searchType: string;
     @Input() detailPage : any;
 
-    public results: Array<Media>;
+    public medias: Array<Media>;
 
-    constructor(private omdb: OmdbProvider, private navigation: NavController) {
+    constructor(private omdb: OmdbProvider) {
         this.reset();
     }
 
@@ -21,19 +21,13 @@ export class MediaSearchComponent {
         this.reset();
 
         this.omdb.search(event.target.value, {type: this.searchType})
-            .then((results: any) => this.results = results)
+            .then((results: any) => this.medias = results)
             .catch((error) => {
                 this.reset();
             })
     }
 
-    showDetail(media: Media) {
-        this.navigation.push(this.detailPage, {
-            media: media
-        })
-    }
-
     private reset() {
-        this.results = [];
+        this.medias = [];
     }
 }

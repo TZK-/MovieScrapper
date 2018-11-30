@@ -4,6 +4,7 @@ import {MediaSearchComponent} from './media-search/media-search';
 import {MediaComponent} from './media/media';
 import { SeasonsComponent } from './seasons/seasons';
 import { FavouriteComponent } from './favourite/favourite';
+import { MediaCardComponent } from './media-card/media-card';
 
 @NgModule({
     declarations: [
@@ -11,7 +12,8 @@ import { FavouriteComponent } from './favourite/favourite';
         MediaSearchComponent,
         MediaComponent,
         SeasonsComponent,
-    FavouriteComponent
+    FavouriteComponent,
+    MediaCardComponent
     ],
     imports: [],
     exports: [
@@ -19,7 +21,8 @@ import { FavouriteComponent } from './favourite/favourite';
         MediaSearchComponent,
         MediaComponent,
         SeasonsComponent,
-    FavouriteComponent
+    FavouriteComponent,
+    MediaCardComponent
     ]
 })
 export class ComponentsModule {
