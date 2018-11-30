@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {IonicPageModule} from "ionic-angular";
 import {MediaComponent} from "./media";
 import {RatingComponentModule} from "../rating/rating.module";
+import {SeasonsComponentModule} from "../seasons/seasons.module";
 
 @NgModule({
     declarations: [
@@ -9,7 +10,8 @@ import {RatingComponentModule} from "../rating/rating.module";
     ],
     imports: [
         IonicPageModule.forChild(MediaComponent),
-        RatingComponentModule
+        RatingComponentModule,
+        SeasonsComponentModule
     ],
     exports: [
         MediaComponent

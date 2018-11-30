@@ -1,0 +1,8 @@
+<ion-list>
+    <button
+            ion-item
+            *ngFor="let season of serie.totalSeasons | numberToArray;let i = index"
+            (tap)="showDetail(serie, i + 1)">
+        Season {{ i + 1 }}
+    </button>
+</ion-list>

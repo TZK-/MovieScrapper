@@ -20,4 +20,5 @@ export interface Media {
     Metascore: number,
     Production: string,
     Website: string;
+    totalSeasons: number;
 }

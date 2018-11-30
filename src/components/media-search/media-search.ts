@@ -20,7 +20,7 @@ export class MediaSearchComponent {
     onInput(event) {
         this.reset();
 
-        this.omdb.getMovies(event.target.value, {type: this.searchType})
+        this.omdb.search(event.target.value, {type: this.searchType})
             .then((results: any) => this.results = results)
             .catch((error) => {
                 this.reset();

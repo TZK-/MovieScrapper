@@ -1,0 +1,13 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ serie.Title }} - Season {{ season }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list *ngIf="episodes">
+        <button ion-item *ngFor="let episode of episodes" (tap)="showDetail(episode)">
+            {{ episode.Title }}
+        </button>
+    </ion-list>
+</ion-content>

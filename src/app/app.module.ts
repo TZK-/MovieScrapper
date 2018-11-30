@@ -13,6 +13,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {MoviesPageModule} from "../pages/movies/movies.module";
 import {SeriesPageModule} from "../pages/series/series.module";
 import {MediaDetailPageModule} from "../pages/media-detail/media-detail.module";
+import {EpisodesPageModule} from "../pages/episodes/episodes.module";
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import {MediaDetailPageModule} from "../pages/media-detail/media-detail.module";
         HttpClientModule,
         MoviesPageModule,
         SeriesPageModule,
-        MediaDetailPageModule
+        MediaDetailPageModule,
+        EpisodesPageModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
