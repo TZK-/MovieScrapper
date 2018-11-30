@@ -21,4 +21,8 @@ export class MediaComponent implements OnInit {
         this.poster = this.posterProvider.getUrl(this.media.imdbID);
         this.rating = Math.round(this.media.imdbRating * this.maxRating / 10);
     }
+
+    setFallbackPoster() {
+        this.poster = this.media.Poster;
+    }
 }

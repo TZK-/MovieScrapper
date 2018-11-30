@@ -1,5 +1,5 @@
 <ion-card>
-    <img [src]="poster">
+    <img [src]="poster" (error)="setFallbackPoster()">
 </ion-card>
 
 <ion-card>
@@ -15,8 +15,6 @@
         </p>
         <p>{{ media.Awards }}</p>
     </ion-item>
-
-    <img [src]="poster">
 
     <ion-card-content>
         <p>{{ media.Plot }}</p>

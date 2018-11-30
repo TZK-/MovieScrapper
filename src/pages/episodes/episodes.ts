@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Media} from "../../Interfaces/Media";
 import {OmdbProvider} from "../../providers/omdb/omdb";
+import {EpisodeDetailPage} from "../episode-detail/episode-detail";
+import {MediaDetailPage} from "../media-detail/media-detail";
 
 @IonicPage()
 @Component({
@@ -15,7 +17,7 @@ export class EpisodesPage {
     episodes: Array<Media> = [];
 
     constructor(
-        private navCtrl: NavController,
+        private navigation: NavController,
         private navParams: NavParams,
         private omdb: OmdbProvider
     ) {
@@ -33,8 +35,11 @@ export class EpisodesPage {
             })
     }
 
-    showDetail(episode) {
-        //
+    showDetail(episode:Media) {
+        console.log(episode);
+        this.navigation.push(MediaDetailPage, {
+            media: episode
+        })
     }
 
 }

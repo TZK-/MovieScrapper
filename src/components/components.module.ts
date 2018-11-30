@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {RatingComponent} from './rating/rating';
 import {MediaSearchComponent} from './media-search/media-search';
 import {MediaComponent} from './media/media';
-import { SerieComponent } from './serie/serie';
 import { SeasonsComponent } from './seasons/seasons';
 
 @NgModule({
@@ -10,16 +9,14 @@ import { SeasonsComponent } from './seasons/seasons';
         RatingComponent,
         MediaSearchComponent,
         MediaComponent,
-    SerieComponent,
-    SeasonsComponent
+        SeasonsComponent
     ],
     imports: [],
     exports: [
         RatingComponent,
         MediaSearchComponent,
         MediaComponent,
-    SerieComponent,
-    SeasonsComponent
+        SeasonsComponent
     ]
 })
 export class ComponentsModule {

@@ -14,6 +14,7 @@ import {MoviesPageModule} from "../pages/movies/movies.module";
 import {SeriesPageModule} from "../pages/series/series.module";
 import {MediaDetailPageModule} from "../pages/media-detail/media-detail.module";
 import {EpisodesPageModule} from "../pages/episodes/episodes.module";
+import {EpisodeDetailPageModule} from "../pages/episode-detail/episode-detail.module";
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import {EpisodesPageModule} from "../pages/episodes/episodes.module";
         MoviesPageModule,
         SeriesPageModule,
         MediaDetailPageModule,
-        EpisodesPageModule
+        EpisodesPageModule,
+        EpisodeDetailPageModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
