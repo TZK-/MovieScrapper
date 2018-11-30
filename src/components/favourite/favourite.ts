@@ -15,7 +15,6 @@ export class FavouriteComponent implements OnInit {
     }
 
     toggle() {
-        console.log(this.isFavourite);
         this.isFavourite
             ? this.favourite.remove(this.media)
             : this.favourite.add(this.media);

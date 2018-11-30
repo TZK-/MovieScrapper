@@ -1,25 +1,25 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the FavoritesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {Component} from '@angular/core';
+import {IonicPage} from 'ionic-angular';
+import {FavouriteProvider} from "../../providers/favourite/favourite";
+import {Media} from "../../Interfaces/Media";
 
 @IonicPage()
 @Component({
-  selector: 'page-favorites',
-  templateUrl: 'favorites.html',
+    selector: 'page-favorites',
+    templateUrl: 'favorites.html',
 })
 export class FavoritesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    favourites: Array<Media>;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FavoritesPage');
-  }
+    constructor(private favouriteProvider: FavouriteProvider) {
+        //
+    }
+
+    ionViewDidLoad() {
+        this.favouriteProvider.all().then((favourites) => {
+            this.favourites = favourites;
+        })
+    }
 
 }

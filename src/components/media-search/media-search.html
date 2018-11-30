@@ -2,7 +2,7 @@
 
 <ion-content padding class="card-background">
     <ion-row>
-        <ion-col col-12 *ngFor="let result of results">
+        <ion-col *ngFor="let result of results">
             <ion-card (tap)="showDetail(result)" class="card-background-page">
                 <div class="image">
                     <img src="{{ result.Poster }}"/>
