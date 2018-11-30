@@ -14,7 +14,7 @@ export class FavouriteProvider {
     async all() {
         const favourites = await this.storage.get(this.STORAGE_KEY);
 
-        return favourites || [];
+        return (favourites || []).reverse();
     }
 
     add(media: Media) {
