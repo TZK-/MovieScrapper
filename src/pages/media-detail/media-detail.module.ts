@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {IonicPageModule} from 'ionic-angular';
 import {MediaComponentModule} from "../../components/media/media.module";
 import {MediaDetailPage} from "./media-detail";
+import {FavouriteComponentModule} from "../../components/favourite/favourite.module";
 
 @NgModule({
     declarations: [
@@ -9,7 +10,8 @@ import {MediaDetailPage} from "./media-detail";
     ],
     imports: [
         IonicPageModule.forChild(MediaDetailPage),
-        MediaComponentModule
+        MediaComponentModule,
+        FavouriteComponentModule
     ],
 })
 export class MediaDetailPageModule {

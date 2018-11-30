@@ -29,7 +29,7 @@ export class OmdbProvider {
         return this.toPromise(observable);
     }
 
-    getSerieEpisodes(id:string, season: number) {
+    getSerieEpisodes(id: string, season: number) {
         const observable = this.http.get(this.getUrl({
             i: id,
             season: season

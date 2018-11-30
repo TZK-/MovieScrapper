@@ -8,6 +8,9 @@
 
     <ion-navbar>
         <ion-title *ngIf="movie">{{ movie.Title }}</ion-title>
+        <ion-buttons end *ngIf="movie">
+            <favourite [media]="movie"></favourite>
+        </ion-buttons>
     </ion-navbar>
 
 </ion-header>

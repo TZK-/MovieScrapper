@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Media} from "../../Interfaces/Media";
 import {OmdbProvider} from "../../providers/omdb/omdb";
-import {EpisodeDetailPage} from "../episode-detail/episode-detail";
 import {MediaDetailPage} from "../media-detail/media-detail";
 
 @IonicPage()
@@ -27,7 +26,7 @@ export class EpisodesPage {
 
     ionViewDidLoad() {
         this.omdb.getSerieEpisodes(this.serie.imdbID, this.season)
-            .then((episodes:any) => {
+            .then((episodes: any) => {
                 this.episodes = episodes;
             })
             .catch(error => {
@@ -35,8 +34,7 @@ export class EpisodesPage {
             })
     }
 
-    showDetail(episode:Media) {
-        console.log(episode);
+    showDetail(episode: Media) {
         this.navigation.push(MediaDetailPage, {
             media: episode
         })
