@@ -3,6 +3,8 @@ import {FavouriteProvider} from "../favourite/favourite";
 import {File} from '@ionic-native/file';
 import {SocialSharing} from "@ionic-native/social-sharing";
 
+import {Parser as Json2csvParser} from "json2csv";
+
 @Injectable()
 export class FavouriteExporterProvider {
 
@@ -22,6 +24,8 @@ export class FavouriteExporterProvider {
         let content = "";
         switch (type) {
             case 'csv':
+                const json2csvParser = new Json2csvParser();
+                content = json2csvParser.parse(favourites);
                 break;
             case 'json':
             default:
