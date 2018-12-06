@@ -16,8 +16,9 @@ import {MediaDetailPageModule} from "../pages/media-detail/media-detail.module";
 import {EpisodesPageModule} from "../pages/episodes/episodes.module";
 import {FavouriteProvider} from '../providers/favourite/favourite';
 import {FavouriteExporterProvider} from '../providers/favourite-exporter/favourite-exporter';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-import { File } from '@ionic-native/file';
+import {File} from '@ionic-native/file';
+import {SocialSharing} from "@ionic-native/social-sharing";
+import {FavoritesPageModule} from "../pages/favorites/favorites.module";
 
 @NgModule({
     declarations: [
@@ -32,7 +33,8 @@ import { File } from '@ionic-native/file';
         MoviesPageModule,
         SeriesPageModule,
         MediaDetailPageModule,
-        EpisodesPageModule
+        EpisodesPageModule,
+        FavoritesPageModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -49,7 +51,7 @@ import { File } from '@ionic-native/file';
         FavouriteProvider,
         FavouriteExporterProvider,
         File,
-        FileTransfer
+        SocialSharing
     ]
 })
 export class AppModule {

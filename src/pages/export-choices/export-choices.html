@@ -1,0 +1,6 @@
+<ion-list>
+    <ion-list-header>Export type</ion-list-header>
+    <button ion-item *ngFor="let type of types" (click)="exportFavourites(type)">
+        {{ type }}
+    </button>
+</ion-list>

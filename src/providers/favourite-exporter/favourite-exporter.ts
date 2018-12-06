@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {FavouriteProvider} from "../favourite/favourite";
-import {FileTransfer} from '@ionic-native/file-transfer';
 import {File} from '@ionic-native/file';
+import {SocialSharing} from "@ionic-native/social-sharing";
 
 @Injectable()
 export class FavouriteExporterProvider {
@@ -10,28 +10,34 @@ export class FavouriteExporterProvider {
 
     constructor(
         private favouriteProvider: FavouriteProvider,
-        private transfer: FileTransfer,
-        private file: File) {
+        private file: File,
+        private socialSharing: SocialSharing) {
         //
     }
 
-    download() {
-        var fileName = "myfile.zip";
-//for IOS
-        var filePath = this.file.cacheDirectory+"/Download/"+fileName;
-//for Android
-//var filePath = cordova.file.externalRootDirectory+"/Download/"+fileName;
+    async download(type: string) {
+        const filename = this.EXPORT_NAME + '.' + type;
+        const favourites = await this.favouriteProvider.all();
 
-        var mimeType = "application/zip";
-        this.plugins.fileOpener2.open(
-            filePath,
-            mimeType,
-            {error : function(){
-                    my.alert("ERROR opening with cordova.plugins.fileOpener2");
-                },
-                success : function(){
-                    my.log("SUCCESS opening zip file");
-                }
+        let content = "";
+        switch (type) {
+            case 'csv':
+                break;
+            case 'json':
+            default:
+                content = JSON.stringify(favourites, null, 4);
+                break;
+        }
+
+        return this.file
+            .writeFile(
+                this.file.tempDirectory,
+                filename,
+                content,
+                {replace: true}
+            )
+            .then(value => {
+                return this.socialSharing.share(null, null, null, value.nativeURL);
             });
     }
 

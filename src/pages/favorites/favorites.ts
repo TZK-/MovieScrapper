@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
-import {IonicPage} from 'ionic-angular';
+import {IonicPage, PopoverController} from 'ionic-angular';
 import {FavouriteProvider} from "../../providers/favourite/favourite";
 import {Media} from "../../Interfaces/Media";
 import {MediaDetailPage} from "../media-detail/media-detail";
-import {FavouriteExporterProvider} from "../../providers/favourite-exporter/favourite-exporter";
+import {ExportChoicesPage} from "../export-choices/export-choices";
 
 @IonicPage()
 @Component({
@@ -15,7 +15,10 @@ export class FavoritesPage {
     favourites: Array<Media>;
     detailPage = MediaDetailPage;
 
-    constructor(private favouriteProvider: FavouriteProvider, private exporter: FavouriteExporterProvider) {
+    constructor(
+        private favouriteProvider: FavouriteProvider,
+        private popover: PopoverController
+    ) {
         //
     }
 
@@ -25,10 +28,11 @@ export class FavoritesPage {
         })
     }
 
-    download() {
-        this.exporter.download()
-            .then(res => console.log("ok", res))
-            .catch(err => console.log("err", err));
+    presentPopover(event) {
+        const popover = this.popover.create(ExportChoicesPage);
+        popover.present({
+            ev: event
+        });
     }
 
 }
