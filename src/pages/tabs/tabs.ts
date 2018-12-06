@@ -1,12 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController} from 'ionic-angular';
-
-/**
- * Generated class for the TabsPage tabs.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {IonicPage} from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -19,7 +12,4 @@ export class TabsPage {
     seriesRoot = 'SeriesPage';
     favoritesRoot = 'FavoritesPage';
 
-    constructor(public navCtrl: NavController) {
-        //
-    }
 }

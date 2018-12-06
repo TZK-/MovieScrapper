@@ -14,7 +14,10 @@ import {MoviesPageModule} from "../pages/movies/movies.module";
 import {SeriesPageModule} from "../pages/series/series.module";
 import {MediaDetailPageModule} from "../pages/media-detail/media-detail.module";
 import {EpisodesPageModule} from "../pages/episodes/episodes.module";
-import { FavouriteProvider } from '../providers/favourite/favourite';
+import {FavouriteProvider} from '../providers/favourite/favourite';
+import {FavouriteExporterProvider} from '../providers/favourite-exporter/favourite-exporter';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 @NgModule({
     declarations: [
@@ -43,7 +46,10 @@ import { FavouriteProvider } from '../providers/favourite/favourite';
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         OmdbProvider,
         PosterProvider,
-    FavouriteProvider
+        FavouriteProvider,
+        FavouriteExporterProvider,
+        File,
+        FileTransfer
     ]
 })
 export class AppModule {
