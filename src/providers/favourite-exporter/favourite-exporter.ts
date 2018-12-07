@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {FavouriteProvider} from "../favourite/favourite";
 import {File} from '@ionic-native/file';
-import {SocialSharing} from "@ionic-native/social-sharing";
 
 import {Parser as Json2csvParser} from "json2csv";
 
@@ -12,8 +11,7 @@ export class FavouriteExporterProvider {
 
     constructor(
         private favouriteProvider: FavouriteProvider,
-        private file: File,
-        private socialSharing: SocialSharing) {
+        private file: File) {
         //
     }
 
@@ -39,10 +37,7 @@ export class FavouriteExporterProvider {
                 filename,
                 content,
                 {replace: true}
-            )
-            .then(value => {
-                return this.socialSharing.share(null, null, null, value.nativeURL);
-            });
+            );
     }
 
 }

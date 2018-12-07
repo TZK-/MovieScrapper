@@ -26,8 +26,6 @@ export class ImportFavouritePage {
     }
 
     async processImport() {
-        console.log(this.url);
-
         let content = await this.http.get<Array<Media>>(this.url).toPromise();
         this.favouriteProvider.init(content);
 
