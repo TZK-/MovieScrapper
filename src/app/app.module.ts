@@ -19,7 +19,6 @@ import {FavouriteExporterProvider} from '../providers/favourite-exporter/favouri
 import {File} from '@ionic-native/file';
 import {SocialSharing} from "@ionic-native/social-sharing";
 import {FavoritesPageModule} from "../pages/favorites/favorites.module";
-import {DownloaderProvider} from '../providers/downloader/downloader';
 import {ImportFavouritePageModule} from "../pages/import-favourite/import-favourite.module";
 import {FileTransfer} from "@ionic-native/file-transfer";
 
