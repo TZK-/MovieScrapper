@@ -15,6 +15,7 @@ export class FavoritesPage {
 
     favourites: Array<Media>;
     detailPage = MediaDetailPage;
+    filterType = 'all';
 
     constructor(
         private favouriteProvider: FavouriteProvider,
@@ -25,13 +26,13 @@ export class FavoritesPage {
     }
 
     ionViewWillEnter() {
-        this.initFavourites();
+        this.initFavourites(this.filterType);
     }
 
     presentPopover(event) {
         const popover = this.popoverController.create(ExportChoicesPage);
 
-        popover.onDidDismiss(() => this.initFavourites());
+        popover.onDidDismiss(() => this.initFavourites(this.filterType));
 
         popover.present({
             ev: event
@@ -42,10 +43,20 @@ export class FavoritesPage {
         this.modal.create(ImportFavouritePage).present();
     }
 
-    private initFavourites() {
-        this.favouriteProvider.all().then((favourites) => {
+    private initFavourites(type: string) {
+        let filter = {};
+        if (type != 'all') {
+            // @ts-ignore
+            filter.Type = type;
+        }
+
+        return this.favouriteProvider.filter(filter).then(favourites => {
             this.favourites = favourites;
         });
+    }
+
+    filterChanged(event) {
+        return this.initFavourites(event.value);
     }
 
 }

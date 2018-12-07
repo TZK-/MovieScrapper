@@ -14,11 +14,11 @@ export class FavouriteProvider {
     async all() {
         const favourites = await this.storage.get(this.STORAGE_KEY);
 
-        return (favourites || []).reverse();
+        return (favourites || []).reverse();
     }
 
     add(media: Media) {
-        this.all().then((favourites:Array<Media>) => {
+        this.all().then((favourites: Array<Media>) => {
             favourites.push(media);
             this.storage.set(this.STORAGE_KEY, favourites);
         });
@@ -35,7 +35,7 @@ export class FavouriteProvider {
     }
 
     async isFavourite(media: Media) {
-        const favourites : Array<Media> = await this.all();
+        const favourites: Array<Media> = await this.all();
 
         return favourites.filter((favourite: Media) => {
             return favourite.imdbID == media.imdbID;
@@ -44,5 +44,19 @@ export class FavouriteProvider {
 
     init(data: Array<Media>) {
         return this.storage.set(this.STORAGE_KEY, data);
+    }
+
+    async filter(filters) {
+        const favourites = await this.all();
+
+        return favourites.filter(favourite => {
+            for(const filter in filters) {
+                if (favourite[filter] != filters[filter]) {
+                    return false;
+                }
+            }
+
+            return true;
+        });
     }
 }
