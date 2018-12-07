@@ -6,4 +6,8 @@
             <media-card [media]="media" [detailPage]="detailPage"></media-card>
         </ion-col>
     </ion-row>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>
