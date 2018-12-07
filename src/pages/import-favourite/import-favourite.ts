@@ -16,8 +16,6 @@ export class ImportFavouritePage {
     url: string;
 
     constructor(
-        private transfer: FileTransfer,
-        private file: File,
         private favouriteProvider: FavouriteProvider,
         private view: ViewController,
         private http: HttpClient
