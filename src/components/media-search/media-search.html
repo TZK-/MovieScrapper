@@ -1,4 +1,4 @@
-<ion-searchbar (ionInput)="onInput($event)"></ion-searchbar>
+<ion-searchbar (ionInput)="onInput($event)" *ngIf="showSearchBar"></ion-searchbar>
 
 <ion-content padding>
     <ion-row>

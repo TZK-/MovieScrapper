@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {OmdbProvider} from "../../providers/omdb/omdb";
-import {InfiniteScroll, NavController} from "ionic-angular";
+import {InfiniteScroll} from "ionic-angular";
 import {Media} from "../../Interfaces/Media";
 
 @Component({
@@ -9,11 +9,12 @@ import {Media} from "../../Interfaces/Media";
 })
 export class MediaSearchComponent {
     @Input() searchType: string;
-    @Input() detailPage : any;
+    @Input() detailPage: any;
+    @Input() showSearchBar = true;
 
     public medias: Array<Media>;
-    private search: string;
     public page: number;
+    private search: string;
 
     constructor(private omdb: OmdbProvider) {
         this.reset();
@@ -22,17 +23,12 @@ export class MediaSearchComponent {
     onInput(event) {
         this.reset();
         this.search = event.target.value;
-        
+
         this.omdb.search(this.search, {type: this.searchType})
             .then((results: any) => this.medias = results)
             .catch((error) => {
                 this.reset();
             });
-    }
-
-    private reset() {
-        this.medias = [];
-        this.page = 1;
     }
 
     doInfinite(event: InfiniteScroll) {
@@ -45,5 +41,14 @@ export class MediaSearchComponent {
                 // do nothing
             });
         event.complete();
+    }
+
+    private reset() {
+        this.medias = [];
+        this.page = 1;
+    }
+
+    hideSearch() {
+        this.showSearchBar = false;
     }
 }

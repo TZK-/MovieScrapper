@@ -9,4 +9,9 @@ import {MediaDetailPage} from "../media-detail/media-detail";
 })
 export class MoviesPage {
     public detailPage: any = MediaDetailPage;
+    public search = false;
+
+    toggleSearch() {
+        this.search = !this.search;
+    }
 }

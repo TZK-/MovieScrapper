@@ -1,9 +1,14 @@
 <ion-header>
     <ion-navbar>
         <ion-title>Series</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (tap)="toggleSearch()">
+                <ion-icon name="search"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <media-search searchType="series" [detailPage]="detailPage"></media-search>
+    <media-search searchType="series" [detailPage]="detailPage" [showSearchBar]="search"></media-search>
 </ion-content>
