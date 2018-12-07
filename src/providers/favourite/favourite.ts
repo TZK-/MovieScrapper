@@ -41,4 +41,8 @@ export class FavouriteProvider {
             return favourite.imdbID == media.imdbID;
         }).length > 0;
     }
+
+    init(data: Array<Media>) {
+        return this.storage.set(this.STORAGE_KEY, data);
+    }
 }

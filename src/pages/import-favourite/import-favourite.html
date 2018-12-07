@@ -1,0 +1,20 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Import your favourites</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-label>URL</ion-label>
+            <ion-input type="text" [(ngModel)]="url"></ion-input>
+        </ion-item>
+        <div padding>
+            <button ion-button color="primary" block (tap)="processImport()">Import</button>
+        </div>
+    </ion-list>
+</ion-content>

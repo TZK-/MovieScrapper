@@ -35,7 +35,7 @@ export class FavouriteExporterProvider {
 
         return this.file
             .writeFile(
-                this.file.tempDirectory,
+                this.file.dataDirectory,
                 filename,
                 content,
                 {replace: true}
