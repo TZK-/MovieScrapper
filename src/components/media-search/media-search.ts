@@ -36,9 +36,11 @@ export class MediaSearchComponent {
             .then((results: any) => {
                 this.medias = [...this.medias, ...results];
                 this.page++;
+            }, () => {
+                event.enable(false);
             })
-            .catch((error) => {
-                // do nothing
+            .catch(() => {
+                event.enable(false);
             });
         event.complete();
     }
@@ -46,9 +48,5 @@ export class MediaSearchComponent {
     private reset() {
         this.medias = [];
         this.page = 1;
-    }
-
-    hideSearch() {
-        this.showSearchBar = false;
     }
 }
