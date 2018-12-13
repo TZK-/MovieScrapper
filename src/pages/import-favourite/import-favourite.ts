@@ -1,7 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, ViewController} from 'ionic-angular';
-import {FileTransfer} from "@ionic-native/file-transfer";
-import {File} from "@ionic-native/file";
+import {IonicPage, Platform, ViewController} from 'ionic-angular';
 import {FavouriteProvider} from "../../providers/favourite/favourite";
 import {HttpClient} from "@angular/common/http";
 import {Media} from "../../interfaces/Media";
@@ -18,7 +16,8 @@ export class ImportFavouritePage {
     constructor(
         private favouriteProvider: FavouriteProvider,
         private view: ViewController,
-        private http: HttpClient
+        private http: HttpClient,
+        private platform: Platform
     ) {
         this.url = '';
     }

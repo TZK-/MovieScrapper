@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, Platform, ViewController} from 'ionic-angular';
 import {FavouriteExporterProvider} from "../../providers/favourite-exporter/favourite-exporter";
 import {SocialSharing} from "@ionic-native/social-sharing";
 
@@ -24,15 +24,21 @@ export class ExportChoicesPage {
     constructor(
         private exporter: FavouriteExporterProvider,
         private view: ViewController,
-        private socialSharing: SocialSharing) {
+        private socialSharing: SocialSharing,
+        private platform: Platform
+    ) {
         //
     }
 
     exportFavourites(type: string) {
         this.view.dismiss();
 
-        this.exporter.download(type).then(file => {
-            return this.socialSharing.share(null, null, null, file.nativeURL);
-        });
+        if (this.platform.is('mobile')) {
+            return this.exporter.download(type).then(file => {
+                return this.socialSharing.share(null, null, null, file.nativeURL);
+            });
+        }
+
+        // fileTransfer for browser only
     }
 }
