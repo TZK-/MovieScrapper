@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PosterProvider} from "../../providers/omdb/poster";
 import {Media} from "../../Interfaces/Media";
+import {SocialSharing} from "@ionic-native/social-sharing";
 
 @Component({
     selector: 'media',
@@ -13,7 +14,10 @@ export class MediaComponent implements OnInit {
 
     private maxRating = 5;
 
-    constructor(private posterProvider: PosterProvider) {
+    constructor(
+        private posterProvider: PosterProvider,
+        private socialSharing: SocialSharing
+    ) {
         //
     }
 
@@ -24,5 +28,11 @@ export class MediaComponent implements OnInit {
 
     setFallbackPoster() {
         this.poster = this.media.Poster;
+    }
+
+    downloadPoster() {
+        return this.socialSharing.shareWithOptions({
+            files: [this.poster]
+        });
     }
 }
