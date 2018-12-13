@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PosterProvider} from "../../providers/omdb/poster";
 import {Media} from "../../Interfaces/Media";
 import {SocialSharing} from "@ionic-native/social-sharing";
+import {ToastController} from "ionic-angular";
 
 @Component({
     selector: 'media',
@@ -16,7 +17,8 @@ export class MediaComponent implements OnInit {
 
     constructor(
         private posterProvider: PosterProvider,
-        private socialSharing: SocialSharing
+        private socialSharing: SocialSharing,
+        private toast: ToastController
     ) {
         //
     }
@@ -31,8 +33,16 @@ export class MediaComponent implements OnInit {
     }
 
     downloadPoster() {
-        return this.socialSharing.shareWithOptions({
-            files: [this.poster]
-        });
+        return this.socialSharing.share(null, null, this.poster, null).then(() => {
+            this.toast.create({
+                message: 'Poster successfully shared !',
+                duration: 3000
+            }).present();
+        }).catch((e) => {
+            this.toast.create({
+                message: JSON.stringify(e),
+                duration: 3000
+            }).present();
+        })
     }
 }
