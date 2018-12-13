@@ -1,14 +1,9 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, Platform, ViewController} from 'ionic-angular';
+import {IonicPage, NavParams, Platform, ViewController} from 'ionic-angular';
+import {downloadBrowser} from "../../utils";
 import {FavouriteExporterProvider} from "../../providers/favourite-exporter/favourite-exporter";
 import {SocialSharing} from "@ionic-native/social-sharing";
-
-/**
- * Generated class for the ExportChoicesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {File} from "@ionic-native/file";
 
 @IonicPage()
 @Component({
@@ -16,29 +11,41 @@ import {SocialSharing} from "@ionic-native/social-sharing";
     templateUrl: 'export-choices.html',
 })
 export class ExportChoicesPage {
-
     types = [
         'json', 'csv'
     ];
+    private EXPORT_NAME = 'favourites';
 
     constructor(
-        private exporter: FavouriteExporterProvider,
         private view: ViewController,
+        private navParams: NavParams,
+        private exporter: FavouriteExporterProvider,
         private socialSharing: SocialSharing,
-        private platform: Platform
+        private platform: Platform,
+        private file: File
     ) {
         //
     }
 
     exportFavourites(type: string) {
-        this.view.dismiss();
+        const filename = this.EXPORT_NAME + '.' + type;
+        this.exporter.getContent(type).then(content => {
+            if (this.platform.is('core')) {
+                const blob = new Blob([content], {type: 'application/json'});
+                downloadBrowser(blob, filename);
+                return;
+            }
 
-        if (this.platform.is('mobile')) {
-            return this.exporter.download(type).then(file => {
-                return this.socialSharing.share(null, null, null, file.nativeURL);
+            this.file.writeFile(
+                this.file.dataDirectory,
+                filename,
+                content,
+                {replace: true}
+            ).then(file => {
+                return this.socialSharing.shareWithOptions({
+                    files: [file.nativeURL]
+                });
             });
-        }
-
-        // fileTransfer for browser only
+        });
     }
 }

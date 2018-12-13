@@ -1,10 +1,14 @@
 import {Component} from '@angular/core';
-import {IonicPage, ModalController, PopoverController} from 'ionic-angular';
+import {IonicPage, ModalController, Platform, PopoverController, ViewController} from 'ionic-angular';
 import {FavouriteProvider} from "../../providers/favourite/favourite";
 import {Media} from "../../Interfaces/Media";
 import {MediaDetailPage} from "../media-detail/media-detail";
 import {ExportChoicesPage} from "../export-choices/export-choices";
 import {ImportFavouritePage} from "../import-favourite/import-favourite";
+import {downloadBrowser} from "../../utils";
+import {FavouriteExporterProvider} from "../../providers/favourite-exporter/favourite-exporter";
+import {SocialSharing} from "@ionic-native/social-sharing";
+import {File} from "@ionic-native/file";
 
 @IonicPage()
 @Component({
@@ -43,6 +47,10 @@ export class FavoritesPage {
         this.modal.create(ImportFavouritePage).present();
     }
 
+    filterChanged(event) {
+        return this.initFavourites(event.value);
+    }
+
     private initFavourites(type: string) {
         let filter = {};
         if (type != 'all') {
@@ -54,9 +62,4 @@ export class FavoritesPage {
             this.favourites = favourites;
         });
     }
-
-    filterChanged(event) {
-        return this.initFavourites(event.value);
-    }
-
 }
