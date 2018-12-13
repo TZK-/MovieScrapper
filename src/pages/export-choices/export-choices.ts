@@ -31,7 +31,12 @@ export class ExportChoicesPage {
         const filename = this.EXPORT_NAME + '.' + type;
         this.exporter.getContent(type).then(content => {
             if (this.platform.is('core')) {
-                const blob = new Blob([content], {type: 'application/json'});
+                const blob = new Blob([content], {
+                    type: type == 'csv'
+                        ? 'text/csv'
+                        : 'application/json'
+                });
+
                 downloadBrowser(blob, filename);
                 return;
             }
