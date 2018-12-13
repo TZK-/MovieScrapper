@@ -2,7 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PosterProvider} from "../../providers/omdb/poster";
 import {Media} from "../../Interfaces/Media";
 import {SocialSharing} from "@ionic-native/social-sharing";
-import {ToastController} from "ionic-angular";
+import {Platform, ToastController} from "ionic-angular";
+import {downloadBrowser} from '../../utils';
 
 @Component({
     selector: 'media',
@@ -18,7 +19,8 @@ export class MediaComponent implements OnInit {
     constructor(
         private posterProvider: PosterProvider,
         private socialSharing: SocialSharing,
-        private toast: ToastController
+        private toast: ToastController,
+        private platform: Platform
     ) {
         //
     }
@@ -33,16 +35,24 @@ export class MediaComponent implements OnInit {
     }
 
     downloadPoster() {
-        return this.socialSharing.share(null, null, this.poster, null).then(() => {
-            this.toast.create({
-                message: 'Poster successfully shared !',
-                duration: 3000
-            }).present();
-        }).catch((e) => {
-            this.toast.create({
-                message: JSON.stringify(e),
-                duration: 3000
-            }).present();
-        })
+        if (this.platform.is('mobile')) {
+            return this.socialSharing.share(null, null, this.poster, null).then(() => {
+                this.toast.create({
+                    message: 'Poster successfully shared !',
+                    duration: 3000
+                }).present();
+            }).catch((e) => {
+                this.toast.create({
+                    message: JSON.stringify(e),
+                    duration: 3000
+                }).present();
+            });
+        }
+
+        this.posterProvider
+            .getBlob(this.media.imdbID)
+            .subscribe(data => {
+                downloadBrowser(data, this.media.Title + '.jpg');
+            });
     }
 }
