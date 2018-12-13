@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-navbar>
+        <ion-buttons start>
+            <button ion-button icon-only (tap)="presentImport()">
+                <ion-icon name="cloud-download"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>Favorites</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (tap)="presentPopover($event)">
+                <ion-icon name="cloud-upload"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+    <ion-toolbar no-border>
+        <ion-segment [(ngModel)]="filterType" (ionChange)="filterChanged($event)">
+            <ion-segment-button value="all">
+                All
+            </ion-segment-button>
+            <ion-segment-button value="movie">
+                Movies
+            </ion-segment-button>
+            <ion-segment-button value="series">
+                Series
+            </ion-segment-button>
+            <ion-segment-button value="episode">
+                Episodes
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+    <div *ngIf="favourites && favourites.length > 0; else noResult">
+        <div *ngFor="let favourite of favourites">
+            <media-card [media]="favourite" [detailPage]="detailPage"></media-card>
+        </div>
+    </div>
+    <ng-template #noResult>
+        There are no favourites for the {{ filterType }}
+    </ng-template>
+</ion-content>

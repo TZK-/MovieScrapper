@@ -1,0 +1,27 @@
+<ion-card>
+    <img [src]="poster" (error)="setFallbackPoster()">
+    <button ion-button (tap)="downloadPoster()">Download poster</button>
+</ion-card>
+
+<ion-card>
+    <ion-item>
+        <h2><a [href]="media.Website">{{ media.Title }}</a></h2>
+        <p>{{ media.Released }}</p>
+        <p>{{ media.Genre }}</p>
+        <p>{{ media.Rated }}</p>
+        <p>{{ media.Production }}</p>
+        <p>{{ media.Actors }}</p>
+        <p>
+            <rating [rating]="rating" [maxRating]="maxRating"></rating> ({{ media.imdbVotes }})
+        </p>
+        <p>{{ media.Awards }}</p>
+    </ion-item>
+
+    <ion-card-content>
+        <p>{{ media.Plot }}</p>
+    </ion-card-content>
+</ion-card>
+
+<div *ngIf="media.Type == 'series'">
+    <seasons [serie]="media"></seasons>
+</div>

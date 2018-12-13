@@ -1,0 +1,22 @@
+<!--
+  Generated template for the MovieDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title *ngIf="movie">{{ movie.Title }}</ion-title>
+        <ion-buttons end *ngIf="movie">
+            <favourite [media]="movie"></favourite>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <div *ngIf="movie">
+        <media [media]="movie"></media>
+    </div>
+</ion-content>
