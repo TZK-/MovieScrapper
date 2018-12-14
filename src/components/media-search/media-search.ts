@@ -46,12 +46,8 @@ export class MediaSearchComponent {
                 this.medias = [...this.medias, ...results];
                 this.page++;
                 event.complete();
-            }, () => {
-                event.enable(false);
-            })
-            .catch(() => {
-                event.enable(false);
-            });
+            }, () => event.enable(false))
+            .catch(() => event.enable(false));
     }
 
     private reset() {

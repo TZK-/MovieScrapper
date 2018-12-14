@@ -50,7 +50,7 @@ export class OmdbProvider {
         this.config = API_CONFIG;
     }
 
-    search(search: string, params = {}) {
+    search(search: string, params : OmdbOptions = {}) {
         const observable = this.http.get(this.getUrl({...{s: search}, ...params})).pipe(
             map(results => {
                 if (results) {
@@ -65,7 +65,7 @@ export class OmdbProvider {
         return this.toPromise(observable);
     }
 
-    getMedia(id: string, params = {}) {
+    getMedia(id: string, params : OmdbOptions = {}) {
         const observable = this.http.get(this.getUrl({
             ...{i: id},
             ...params
