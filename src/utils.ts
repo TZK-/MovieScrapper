@@ -1,4 +1,6 @@
-export function downloadBrowser(blob, filename) : void {
+import {Toast, ToastController} from "ionic-angular";
+
+export function downloadBrowser(blob, filename): void {
     const objectUrl = URL.createObjectURL(blob);
 
     const a = document.createElement('a');
@@ -11,4 +13,19 @@ export function downloadBrowser(blob, filename) : void {
     a.remove();
 
     URL.revokeObjectURL(objectUrl);
+}
+
+export function toast(
+    toastController: ToastController,
+    message: string
+): Toast {
+    const toast = toastController.create({
+        message: message,
+        duration: 3000,
+        position: 'top'
+    });
+
+    toast.present();
+
+    return toast;
 }

@@ -3,7 +3,7 @@ import {PosterProvider} from "../../providers/omdb/poster";
 import {Media} from "../../Interfaces/Media";
 import {SocialSharing} from "@ionic-native/social-sharing";
 import {Platform, ToastController} from "ionic-angular";
-import {downloadBrowser} from '../../utils';
+import {downloadBrowser, toast} from '../../utils';
 
 @Component({
     selector: 'media',
@@ -19,7 +19,7 @@ export class MediaComponent implements OnInit {
     constructor(
         private posterProvider: PosterProvider,
         private socialSharing: SocialSharing,
-        private toast: ToastController,
+        private toastController: ToastController,
         private platform: Platform
     ) {
         //
@@ -36,16 +36,12 @@ export class MediaComponent implements OnInit {
 
     downloadPoster() {
         if (this.platform.is('mobile')) {
-            return this.socialSharing.share(null, null, this.poster, null).then(() => {
-                this.toast.create({
-                    message: 'Poster successfully shared !',
-                    duration: 3000
-                }).present();
+            return this.socialSharing.shareWithOptions({
+                files: [this.poster]
+            }).then(() => {
+                toast(this.toastController, 'Poster successfully shared !');
             }).catch((e) => {
-                this.toast.create({
-                    message: JSON.stringify(e),
-                    duration: 3000
-                }).present();
+                toast(this.toastController, JSON.stringify(e));
             });
         }
 
