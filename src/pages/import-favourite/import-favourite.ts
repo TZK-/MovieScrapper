@@ -20,7 +20,7 @@ export class ImportFavouritePage {
         private favouriteProvider: FavouriteProvider,
         private view: ViewController,
         private http: HttpClient,
-        private toast: ToastController
+        private toastController: ToastController
     ) {
         this.url = '';
     }
@@ -38,13 +38,15 @@ export class ImportFavouritePage {
             // let's try to parse the content as a CSV
             const parse = papa.parse(content);
             if (parse.errors.length > 0) {
-                return toast(this.toast, 'The file seems not to be a valid one.');
+                return toast(this.toastController, 'The file seems not to be a valid one.');
             }
 
             json = parse.data;
         }
 
-        this.favouriteProvider.init(json);
+        await this.favouriteProvider.init(json);
+        toast(this.toastController, 'Favourites successfully imported.');
+
         this.view.dismiss();
     }
 }
