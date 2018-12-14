@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavParams} from 'ionic-angular';
+import {IonicPage, NavParams, ToastController} from 'ionic-angular';
 import {OmdbProvider} from "../../providers/omdb/omdb";
-import {Media} from "../../Interfaces/Media";
+import {Media} from "../../interfaces/Media";
+import {toast} from "../../utils";
 
 @IonicPage()
 @Component({
@@ -12,7 +13,11 @@ export class MediaDetailPage {
 
     movie: Media;
 
-    constructor(private navParams: NavParams, private omdb: OmdbProvider) {
+    constructor(
+        private navParams: NavParams,
+        private omdb: OmdbProvider,
+        private toastController: ToastController
+    ) {
         //
     }
 
@@ -23,9 +28,8 @@ export class MediaDetailPage {
             .then((movie: any) => {
                 this.movie = movie;
             })
-            .catch((errorMessage: string) => {
-                // TODO handle error
-                console.log(errorMessage);
+            .catch((error: string) => {
+                toast(this.toastController, error)
             });
     }
 }

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Media} from "../../Interfaces/Media";
+import {Media} from "../../interfaces/Media";
 import {FavouriteProvider} from "../../providers/favourite/favourite";
 
 @Component({

@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {NavController} from "ionic-angular";
-import {Media} from "../../Interfaces/Media";
+import {Media} from "../../interfaces/Media";
 import {EpisodesPage} from "../../pages/episodes/episodes";
 
 @Component({

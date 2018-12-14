@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, PopoverController} from 'ionic-angular';
 import {FavouriteProvider} from "../../providers/favourite/favourite";
-import {Media} from "../../Interfaces/Media";
+import {Media} from "../../interfaces/Media";
 import {MediaDetailPage} from "../media-detail/media-detail";
 import {ExportChoicesPage} from "../export-choices/export-choices";
 import {ImportFavouritePage} from "../import-favourite/import-favourite";

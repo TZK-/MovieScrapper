@@ -6,6 +6,7 @@ export interface Media {
     imdbVotes: string,
     Type: string,
     Poster: string,
+    PosterHD: string,
     Rated: string,
     Released: string,
     Runtime: string,

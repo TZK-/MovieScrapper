@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Storage} from "@ionic/storage";
-import {Media} from "../../Interfaces/Media";
+import {Media} from "../../interfaces/Media";
 
 @Injectable()
 export class FavouriteProvider {

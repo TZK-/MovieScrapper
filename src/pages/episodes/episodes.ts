@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {Media} from "../../Interfaces/Media";
+import {Media} from "../../interfaces/Media";
 import {OmdbProvider} from "../../providers/omdb/omdb";
 import {MediaDetailPage} from "../media-detail/media-detail";
 

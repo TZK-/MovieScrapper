@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PosterProvider} from "../../providers/omdb/poster";
-import {Media} from "../../Interfaces/Media";
+import {Media} from "../../interfaces/Media";
 import {SocialSharing} from "@ionic-native/social-sharing";
 import {Platform, ToastController} from "ionic-angular";
 import {downloadBrowser, toast} from '../../utils';
@@ -26,7 +26,7 @@ export class MediaComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.poster = this.posterProvider.getUrl(this.media.imdbID);
+        this.poster = this.media.PosterHD || this.media.Poster;
         this.rating = Math.round(this.media.imdbRating * this.maxRating / 10);
     }
 

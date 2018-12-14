@@ -1,7 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {OmdbProvider} from "../../providers/omdb/omdb";
-import {InfiniteScroll} from "ionic-angular";
-import {Media} from "../../Interfaces/Media";
+import {InfiniteScroll, ToastController} from "ionic-angular";
+import {Media} from "../../interfaces/Media";
+import {toast} from "../../utils";
 
 @Component({
     selector: 'media-search',
@@ -16,7 +17,7 @@ export class MediaSearchComponent {
     public page: number;
     private search: string;
 
-    constructor(private omdb: OmdbProvider) {
+    constructor(private omdb: OmdbProvider, private toastController: ToastController) {
         this.reset();
     }
 
@@ -25,9 +26,12 @@ export class MediaSearchComponent {
         this.search = event.target.value;
 
         this.omdb.search(this.search, {type: this.searchType})
-            .then((results: any) => this.medias = results)
+            .then((results: any) => {
+                this.medias = results
+            })
             .catch((error) => {
                 this.reset();
+                toast(this.toastController, error);
             });
     }
 

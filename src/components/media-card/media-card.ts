@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Media} from "../../Interfaces/Media";
+import {Media} from "../../interfaces/Media";
 import {NavController} from "ionic-angular";
 
 @Component({

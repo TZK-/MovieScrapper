@@ -2,6 +2,8 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {map} from "rxjs/operators";
 import {API_CONFIG} from "./config";
+import {Media} from "../../interfaces/Media";
+import {PosterProvider} from "./poster";
 
 export interface OmdbOptions {
     /**
@@ -44,7 +46,7 @@ export interface OmdbOptions {
 export class OmdbProvider {
     private config: any;
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private poster: PosterProvider) {
         this.config = API_CONFIG;
     }
 
@@ -52,7 +54,10 @@ export class OmdbProvider {
         const observable = this.http.get(this.getUrl({...{s: search}, ...params})).pipe(
             map(results => {
                 if (results) {
-                    return results['Search'];
+                    return results['Search'].map((media: Media) => {
+                        media.PosterHD = this.poster.getUrl(media.imdbID);
+                        return media;
+                    });
                 }
             })
         );
@@ -61,7 +66,15 @@ export class OmdbProvider {
     }
 
     getMedia(id: string, params = {}) {
-        const observable = this.http.get(this.getUrl({...{i: id}, ...params}));
+        const observable = this.http.get(this.getUrl({
+            ...{i: id},
+            ...params
+        })).pipe(
+            map((media: Media) => {
+                media.PosterHD = this.poster.getUrl(media.imdbID);
+                return media;
+            })
+        );
 
         return this.toPromise(observable);
     }
