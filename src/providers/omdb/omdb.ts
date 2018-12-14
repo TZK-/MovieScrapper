@@ -3,6 +3,43 @@ import {Injectable} from '@angular/core';
 import {map} from "rxjs/operators";
 import {API_CONFIG} from "./config";
 
+export interface OmdbOptions {
+    /**
+     * A valid IMDb ID
+     */
+    i?: string;
+
+    /**
+     * Movie title to search for.
+     */
+    t?: string;
+
+    /**
+     * Movie title to search for.
+     */
+    s?: string;
+
+    /**
+     * Season number to search for. Must be used with a valid IMDb id.
+     */
+    season?: number;
+
+    /**
+     * Type of result to return (movie|series|episode).
+     */
+    type?: number;
+
+    /**
+     * Year of release.
+     */
+    y?: boolean;
+
+    /**
+     * Return short or full plot (full|short).
+     */
+    plot?: string;
+}
+
 @Injectable()
 export class OmdbProvider {
     private config: any;
@@ -60,7 +97,11 @@ export class OmdbProvider {
         });
     }
 
-    private getUrl(args: Object): string {
+    /**
+     * @param args
+     * @return string
+     */
+    private getUrl(args: OmdbOptions): string {
         const getArgs = Object.keys(args)
             .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(args[key])}`)
             .join('&');

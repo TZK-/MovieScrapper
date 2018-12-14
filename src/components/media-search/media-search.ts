@@ -36,13 +36,13 @@ export class MediaSearchComponent {
             .then((results: any) => {
                 this.medias = [...this.medias, ...results];
                 this.page++;
+                event.complete();
             }, () => {
                 event.enable(false);
             })
             .catch(() => {
                 event.enable(false);
             });
-        event.complete();
     }
 
     private reset() {
