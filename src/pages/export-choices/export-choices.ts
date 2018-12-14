@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, Platform, ToastController, ViewController} from 'ionic-angular';
+import {IonicPage, Platform, ToastController} from 'ionic-angular';
 import {downloadBrowser, toast} from "../../utils";
 import {FavouriteExporterProvider} from "../../providers/favourite-exporter/favourite-exporter";
 import {SocialSharing} from "@ionic-native/social-sharing";
@@ -17,7 +17,6 @@ export class ExportChoicesPage {
     private EXPORT_NAME = 'favourites';
 
     constructor(
-        private view: ViewController,
         private exporter: FavouriteExporterProvider,
         private socialSharing: SocialSharing,
         private platform: Platform,
