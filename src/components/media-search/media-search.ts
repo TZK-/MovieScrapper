@@ -37,7 +37,12 @@ export class MediaSearchComponent {
 
     doInfinite(event: InfiniteScroll) {
         this.omdb.search(this.search, {type: this.searchType, page: this.page + 1})
-            .then((results: any) => {
+            .then((results: Array<Media>) => {
+                if (results.length === 0) {
+                    event.enable(false);
+                    return;
+                }
+
                 this.medias = [...this.medias, ...results];
                 this.page++;
                 event.complete();
