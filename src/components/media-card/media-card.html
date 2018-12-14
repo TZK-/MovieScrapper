@@ -1,9 +1,9 @@
 <ion-card (tap)="showDetail()" class="card-background-page">
-  <div class="image">
-    <img src="{{ media.PosterHD }}"/>
-  </div>
-  <div class="card-title">
-    {{ media.Title }}
-    <div class="card-subtitle">{{ media.Year }}</div>
-  </div>
+    <div class="image">
+        <img [src]="poster" (error)="setFallbackPoster()"/>
+    </div>
+    <div class="card-title">
+        {{ media.Title }}
+        <div class="card-subtitle">{{ media.Year }}</div>
+    </div>
 </ion-card>

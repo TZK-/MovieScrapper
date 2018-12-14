@@ -29,12 +29,18 @@ export interface OmdbOptions {
     /**
      * Type of result to return (movie|series|episode).
      */
-    type?: number;
+    type?: string;
+
+    /**
+     * Which page to get results.
+     * Results are paginated by the API and only returns 10 results per page
+     */
+    page?: number;
 
     /**
      * Year of release.
      */
-    y?: boolean;
+    y?: number;
 
     /**
      * Return short or full plot (full|short).
@@ -50,10 +56,10 @@ export class OmdbProvider {
         this.config = API_CONFIG;
     }
 
-    search(search: string, params : OmdbOptions = {}) {
+    search(search: string, params: OmdbOptions = {}) {
         const observable = this.http.get(this.getUrl({...{s: search}, ...params})).pipe(
             map(results => {
-                if (results) {
+                if (results && results['Search']) {
                     return results['Search'].map((media: Media) => {
                         media.PosterHD = this.poster.getUrl(media.imdbID);
                         return media;
@@ -65,7 +71,7 @@ export class OmdbProvider {
         return this.toPromise(observable);
     }
 
-    getMedia(id: string, params : OmdbOptions = {}) {
+    getMedia(id: string, params: OmdbOptions = {}) {
         const observable = this.http.get(this.getUrl({
             ...{i: id},
             ...params

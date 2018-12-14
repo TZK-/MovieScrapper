@@ -36,10 +36,8 @@ export class MediaComponent implements OnInit {
 
     downloadPoster() {
         if (this.platform.is('mobile')) {
-            return this.socialSharing.shareWithOptions({
+            this.socialSharing.shareWithOptions({
                 files: [this.poster]
-            }).then(() => {
-                toast(this.toastController, 'Poster successfully shared !');
             }).catch((e) => {
                 toast(this.toastController, JSON.stringify(e));
             });

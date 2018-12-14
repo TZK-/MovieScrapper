@@ -1,27 +1,91 @@
 <ion-card>
-    <img [src]="poster" (error)="setFallbackPoster()">
-    <button ion-button (tap)="downloadPoster()">Download poster</button>
-</ion-card>
 
-<ion-card>
     <ion-item>
-        <h2><a [href]="media.Website">{{ media.Title }}</a></h2>
-        <p>{{ media.Released }}</p>
-        <p>{{ media.Genre }}</p>
-        <p>{{ media.Rated }}</p>
-        <p>{{ media.Production }}</p>
-        <p>{{ media.Actors }}</p>
-        <p>
-            <rating [rating]="rating" [maxRating]="maxRating"></rating> ({{ media.imdbVotes }})
-        </p>
-        <p>{{ media.Awards }}</p>
+        <h2>{{ media.Title }}</h2>
+        <rating [rating]="rating" [maxRating]="maxRating"></rating>
+        <small>({{ media.imdbVotes }} votes)</small>
     </ion-item>
+
+    <img [src]="poster" (error)="setFallbackPoster()">
 
     <ion-card-content>
         <p>{{ media.Plot }}</p>
+        <hr>
+        <p>Runtime: {{ media.Runtime }}</p>
+        <p>Released: {{ media.Released }}</p>
+        <p>Genre: {{ media.Genre }}</p>
+        <p>Rated: {{ media.Rated }}</p>
+        <p>Producer: {{ media.Director }}</p>
+        <p>Actors: {{ media.Actors }}</p>
+        <p>Awards: {{ media.Awards }}</p>
+        <p *ngIf="media.Website"> Website:
+            <a [href]="media.Website">
+                {{ media.Website }}
+            </a>
+        </p>
     </ion-card-content>
+
+    <ion-row no-padding>
+        <!--<ion-col text-center>-->
+            <!--<button ion-button clear small color="danger" icon-start>-->
+                <!--<ion-icon name='film'></ion-icon>-->
+                <!--Watch-->
+            <!--</button>-->
+        <!--</ion-col>-->
+
+        <ion-col text-center>
+            <button ion-button clear small color="danger" icon-start (tap)="downloadPoster()">
+                <ion-icon name='images'></ion-icon>
+                Download the Poster
+            </button>
+        </ion-col>
+    </ion-row>
+
 </ion-card>
 
-<div *ngIf="media.Type == 'series'">
+<ion-card *ngIf="media.Type == 'series' && media.totalSeasons > 0">
+    <ion-item>
+        <h2>{{ media.totalSeasons }} season(s)</h2>
+    </ion-item>
+
     <seasons [serie]="media"></seasons>
-</div>
+</ion-card>
+
+
+<!--<ion-grid>-->
+    <!--<ion-row>-->
+        <!--<img [src]="poster" (error)="setFallbackPoster()">-->
+    <!--</ion-row>-->
+    <!--<ion-row>-->
+        <!--<button ion-button (tap)="downloadPoster()">Download poster</button>-->
+    <!--</ion-row>-->
+
+    <!--<ion-row>-->
+        <!--<ion-list></ion-list>-->
+        <!--<h2><a [href]="media.Website">{{ media.Title }}</a></h2>-->
+    <!--</ion-row>-->
+<!--</ion-grid>-->
+
+
+<!--<ion-card>-->
+    <!--<ion-item>-->
+        <!--<h2><a [href]="media.Website">{{ media.Title }}</a></h2>-->
+        <!--<p>{{ media.Released }}</p>-->
+        <!--<p>{{ media.Genre }}</p>-->
+        <!--<p>{{ media.Rated }}</p>-->
+        <!--<p>{{ media.Production }}</p>-->
+        <!--<p>{{ media.Actors }}</p>-->
+        <!--<p>-->
+            <!--<rating [rating]="rating" [maxRating]="maxRating"></rating> ({{ media.imdbVotes }})-->
+        <!--</p>-->
+        <!--<p>{{ media.Awards }}</p>-->
+    <!--</ion-item>-->
+
+    <!--<ion-card-content>-->
+        <!--<p>{{ media.Plot }}</p>-->
+    <!--</ion-card-content>-->
+<!--</ion-card>-->
+
+<!--<div *ngIf="media.Type == 'series'">-->
+    <!--<seasons [serie]="media"></seasons>-->
+<!--</div>-->

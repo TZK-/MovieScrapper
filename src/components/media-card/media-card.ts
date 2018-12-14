@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Media} from "../../interfaces/Media";
 import {NavController} from "ionic-angular";
 
@@ -6,10 +6,12 @@ import {NavController} from "ionic-angular";
     selector: 'media-card',
     templateUrl: 'media-card.html'
 })
-export class MediaCardComponent {
+export class MediaCardComponent implements OnInit {
 
     @Input() detailPage;
     @Input() media: Media;
+
+    poster: string;
 
     constructor(private navigation: NavController) {
         //
@@ -19,5 +21,13 @@ export class MediaCardComponent {
         this.navigation.push(this.detailPage, {
             media: this.media
         })
+    }
+
+    ngOnInit(): void {
+        this.poster = this.media.PosterHD || this.media.Poster;
+    }
+
+    setFallbackPoster() {
+        this.poster = this.media.Poster;
     }
 }
