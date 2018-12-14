@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {API_CONFIG} from './config';
-import {Media} from "../../interfaces/Media";
 import {HttpClient} from "@angular/common/http";
 import {map} from "rxjs/operators";
 

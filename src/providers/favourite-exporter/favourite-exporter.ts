@@ -9,13 +9,16 @@ export class FavouriteExporterProvider {
         //
     }
 
-    async getContent(type: string) {
+    async getContent(type: string): Promise<string> {
         const favourites = await this.favouriteProvider.all();
+        if (favourites.length === 0) {
+            // To avoid getting empty array as string if the JSON is empty.
+            return "";
+        }
 
         switch (type) {
             case 'csv':
-                const json2csvParser = new Json2csvParser();
-                return json2csvParser.parse(favourites);
+                return (new Json2csvParser).parse(favourites);
             case 'json':
             default:
                 return JSON.stringify(favourites, null, 4);
