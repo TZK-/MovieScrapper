@@ -22,4 +22,5 @@ export interface Media {
     Production: string,
     Website: string;
     totalSeasons: number;
+    seriesID: string;
 }
