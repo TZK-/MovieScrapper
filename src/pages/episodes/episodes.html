@@ -5,9 +5,15 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-list *ngIf="episodes">
+    <ion-list *ngIf="episodes.length > 0; else noEpisodes">
         <button ion-item *ngFor="let episode of episodes" (tap)="showDetail(episode)">
             {{ episode.Title }}
         </button>
     </ion-list>
+
+    <ng-template #noEpisodes>
+        <button ion-item>
+            Unable to get the episodes
+        </button>
+    </ng-template>
 </ion-content>

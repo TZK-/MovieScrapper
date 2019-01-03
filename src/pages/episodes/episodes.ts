@@ -30,7 +30,7 @@ export class EpisodesPage {
                 this.episodes = episodes;
             })
             .catch(error => {
-                console.log(error);
+                this.episodes = [];
             })
     }
 
