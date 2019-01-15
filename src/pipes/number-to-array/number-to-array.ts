@@ -9,9 +9,6 @@ import {Pipe, PipeTransform} from '@angular/core';
     name: 'numberToArray',
 })
 export class NumberToArrayPipe implements PipeTransform {
-    /**
-     * Takes a value and makes it lowercase.
-     */
     transform(value:number, ...args) {
         let res = [];
         for (let i = 0; i < value; i++) {
