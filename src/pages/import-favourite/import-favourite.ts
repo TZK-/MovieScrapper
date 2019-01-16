@@ -26,9 +26,14 @@ export class ImportFavouritePage {
     }
 
     async processImport() {
-        const content = await this.http.get(this.url, {
-            responseType: 'text'
-        }).toPromise();
+        let content;
+        try {
+            content = await this.http.get(this.url, {
+                responseType: 'text'
+            }).toPromise();
+        } catch (e) {
+            return toast(this.toastController, 'Unable to download the file at the given url. Please be sure it exists and the server allow CORS requests.');
+        }
 
         let json: Array<Media>;
         try {
